@@ -10,12 +10,12 @@ jwt = JWTManager(app)
 
 @app.route("/login", methods=["POST"])
 def login():
-    email = request.json.get("username", None)
+    email = request.json.get("email", None)
     password = request.json.get("password", None)
  
     all_info = db.session.query(User).filter_by(email=email).first()
     
-
+    print(email, password)
 
     try:
         if email != all_info.email:
