@@ -23,7 +23,7 @@ def login():
         if email is None:
              return jsonify({"msg": "Email is none"}), 401
         if not bcrypt.check_password_hash(all_info.password, password):
-            return jsonify({"msg":"Password does not match"}),200
+            return jsonify("Password does not match"),200
         print(all_info.id)
         access_token = create_access_token(identity=all_info.email)#here we select what we want to return with token,
         #Then, generate new token

@@ -32,12 +32,12 @@ def signup():
         #print(new_user.serialize())
         db.session.add(new_user) 
         db.session.commit()
-        return jsonify({"mensaje":"Usuario creado exitosamente"}), 201
+        return jsonify("Usuario creado exitosamente"), 201
 
     except Exception as err:
         db.session.rollback()
         print(err)
-        return jsonify({"mensaje": "error al registrar usuario"}), 500
+        return jsonify("error al registrar usuario"), 500
 
 
 

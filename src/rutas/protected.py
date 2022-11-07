@@ -10,11 +10,11 @@ import json
 @jwt_required()
 def protected():
     current_user = get_jwt_identity()
-    user = User.query.get(get_jwt_identity())
-    print(user)
+    #user = User.query.get(get_jwt_identity())
+    #print(user)
     jti = get_jwt()["jti"]
     tocken_blocked = BlockedList.query.filter_by(token=jti).first()
     if isinstance(tocken_blocked, BlockedList):
         return jsonify({"msg":"Access denied"})
-
+   
     return jsonify(logged_in_as=current_user), 200
