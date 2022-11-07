@@ -1,5 +1,5 @@
 import os
-from ..main import request, jsonify, app, bcrypt
+from ..main import request, jsonify, app, bcrypt, create_access_token, get_jwt_identity, jwt_required, JWTManager
 from ..db import db
 from ..modelos import User
 from flask import Flask, url_for
@@ -39,5 +39,16 @@ def signup():
         print(err)
         return jsonify("error al registrar usuario"), 500
 
+@app.route("/usersList")
+#@jwt_required()
+def all_users():
+    users = User.query.all()
 
+    #https://www.geeksforgeeks.org/python-map-function/
+    list_users = list(map(lambda item: {"email":item.email}, users)) #1 option
+    list_users1 = list(map(lambda item: item.serialize(), users)) #2 Option
+    print(list_users)
+    
+    return jsonify(list_users)
+    
 

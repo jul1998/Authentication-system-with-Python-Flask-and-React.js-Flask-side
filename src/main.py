@@ -34,7 +34,7 @@ setup_admin(app)
 from src.modelos import User, Planets, BlockedList
 
 ##### Importar las Rutas ####
-from src.rutas import signup, insert_planets, login, protected, logout
+from src.rutas import signup, insert_planets, login, protected, logout, all_users
 
 
 
