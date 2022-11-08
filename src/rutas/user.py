@@ -47,8 +47,8 @@ def all_users():
     #https://www.geeksforgeeks.org/python-map-function/
     list_users = list(map(lambda item: {"email":item.email}, users)) #1 option
     list_users1 = list(map(lambda item: item.serialize(), users)) #2 Option
-    print(list_users)
+    print(list_users1)
     
-    return jsonify(list_users)
+    return jsonify(list_users1)
     
 
